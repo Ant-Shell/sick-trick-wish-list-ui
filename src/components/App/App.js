@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import './App.css';
-import '../../Api.js'
+import '../../Api'
+import '../Card/Card'
 
 class App extends Component {
   constructor() {
@@ -11,7 +12,10 @@ class App extends Component {
   }
 
   componentDidMount() {
-    
+    fetch('http://localhost:3001/api/v1/tricks')
+    .then((response) => response.json())
+    .then((data) => this.setState({ tricks: data}))
+    .catch(error => console.log(error))
   }
 
 
